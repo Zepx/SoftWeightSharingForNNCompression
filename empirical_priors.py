@@ -35,7 +35,7 @@ class GaussianMixturePrior(Layer):
         init_mean = np.linspace(-0.6, 0.6, J - 1)
         self.means = K.variable(init_mean, name='means')
         #   ... the variance (we will work in log-space for more stability)
-        init_stds = np.tile(0.25, J) 
+        init_stds = np.tile(0.25, J)
         init_gamma = - np.log(np.power(init_stds, 2))
         self.gammas = K.variable(init_gamma, name='gammas')
         #   ... the mixing proportions
@@ -88,5 +88,5 @@ class GaussianMixturePrior(Layer):
         # return the neg. log-likelihood for the prior
         return - K.sum(log_likelihood)
 
-    def get_output_shape_for(self, input_shape):
+    def compute_output_shape(self, input_shape):
         return (input_shape[0], 1)

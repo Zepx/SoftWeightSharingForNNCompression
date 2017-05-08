@@ -133,7 +133,7 @@ def save_histogram(W_T,save, upper_bound=200):
 
 
         plt.figure(figsize=(10, 7))
-	plt.yscale("log")
+        plt.yscale("log")
         sns.set(color_codes=True)
         plt.xlim(-1,1)
         plt.ylim(0.001,upper_bound*5)

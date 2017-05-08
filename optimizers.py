@@ -9,7 +9,8 @@ from __future__ import print_function
 import numpy as np
 
 from keras import backend as K
-from keras.utils.generic_utils import get_from_module
+# from keras.utils.generic_utils import get_from_module
+from keras.utils.generic_utils import deserialize_keras_object
 
 from keras.optimizers import Optimizer
 
@@ -149,5 +150,6 @@ adam = Adam
 
 
 def get(identifier, kwargs=None):
-    return get_from_module(identifier, globals(), 'optimizer',
-                           instantiate=True, kwargs=kwargs)
+    return deserialize_keras_object(identifier)
+    # return get_from_module(identifier, globals(), 'optimizer',
+                           # instantiate=True, kwargs=kwargs)
